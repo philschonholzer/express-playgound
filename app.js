@@ -16,8 +16,8 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -25,7 +25,14 @@ app.use(cookieParser());
 app.use(session({ store: new RedisStore({
   host: 'localhost',
   port: 6379
-}), secret: "Shh, its a secret!", resave: false, saveUninitialized: true}));
+}), secret: "Shh, its a secret!", resave: false, saveUninitialized: true
+}));
+
+if (app.get('env') === 'development') {
+  var browserSync = require('browser-sync');
+  var bs = browserSync.create().init({ proxy: "localhost:3000", files: ["public/**/*.*", "views/*.pug"], open: false });
+}
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
