@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h1= id
+    p= question
+
+    form(method='POST' action='')
+        each ans, i in answers
+            input(type='radio' name='answer' value=ans.value checked=(i===0 ? true : false))
+            | #{ans.answer} #[br]
+
+        button(type='submit') Weiter
