@@ -12,6 +12,6 @@
 1. Go to Debug View
 1. Choose `nodemon` in drop-down
 1. Start
-1. Open browser at [localhost:3001](localhost:3001)
+1. Open browser at [localhost:3333](localhost:3333)
 
 The server will restart automatically on file changes.

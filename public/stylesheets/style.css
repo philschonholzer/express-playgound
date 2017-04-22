@@ -10,3 +10,8 @@ a {
 img {
   width: 100%;
 }
+
+textarea {
+  width: 32rem;
+  height: 10rem;
+}
