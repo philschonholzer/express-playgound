@@ -40,10 +40,10 @@ exports.question_post = function (req, res, next) {
     });
 
     if (question < 4) {
-        res.redirect('/question/0' + question++);
+        res.redirect('/questions/0' + question++);
     }
     else {
-        res.redirect('/question/result');
+        res.redirect('/questions/result');
     }
 }
 

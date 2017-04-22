@@ -31,14 +31,14 @@ app.use(session({ store: new RedisStore({
 
 if (app.get('env') === 'development') {
   var browserSync = require('browser-sync');
-  var bs = browserSync.create().init({ proxy: "localhost:3000", files: ["public/**/*.*", "views/*.pug"], open: false });
+  var bs = browserSync.create().init({ proxy: "localhost:3000", files: ["public/**/*.*", "views/*.pug"], port: 3333, open: false });
 }
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/question', questions);
+app.use('/questions', questions);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
